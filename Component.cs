@@ -10,8 +10,6 @@ namespace StartupCompanyGameComponentsOrganizer
     public class Component
     {
         public string Name { get; set; }
-        public ProfessionsEnum ProfessionEnum { get; }
-        public EmployeeLevelEnum EmployeeLevelEnum { get; }
         public TimeSpan CreatingTime { get; set; }
         public Dictionary<Component, int>? RequiredComponents;
 
@@ -31,8 +29,8 @@ namespace StartupCompanyGameComponentsOrganizer
         {
             Name = name;
             CreatingTime = new TimeSpan(hours, 0, 0);
-            ProfessionEnum = professionEnum;
-            EmployeeLevelEnum = employeeLevelEnum;
+            Profession = professionEnum;
+            EmployeeLevel = employeeLevelEnum;
 
             if (requiredComponents != null)
             {
@@ -53,7 +51,7 @@ namespace StartupCompanyGameComponentsOrganizer
         {
             if (RequiredComponents == null)
             {
-                PrintInfo(this);
+                PrintInfo();
                 return;
             }
 
@@ -65,15 +63,19 @@ namespace StartupCompanyGameComponentsOrganizer
                 }
             }
 
-            PrintInfo(this);
+            PrintInfo();
         }
 
-        private void PrintInfo(Component component)
+        private void PrintInfo()
         {
-            string timeInfo = $"{component.CreatingTime.Hours.ToString().PadRight(2)} hours";
+            string timeInfo = $"{CreatingTime.Hours.ToString().PadRight(2)} hours";
+
+            string spaces = "";
+            if (RequiredComponents != null)
+                spaces = new string('-', RequiredComponents.Count);
 
             string info =
-                $" {component.Name.PadRight(30)} will be produced in {timeInfo} by [{component.EmployeeLevel} {component.Profession}]";
+                $"{(spaces + Name).PadRight(30)} will be produced in {timeInfo} by [{EmployeeLevel} {Profession}]";
             Console.WriteLine(info);
         }
     }
