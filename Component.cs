@@ -10,6 +10,8 @@ namespace StartupCompanyGameComponentsOrganizer
     public class Component
     {
         public string Name { get; set; }
+        public ProfessionsEnum ProfessionEnum { get; }
+        public EmployeeLevelEnum EmployeeLevelEnum { get; }
         public TimeSpan CreatingTime { get; set; }
         public Dictionary<Component, int>? RequiredComponents;
 
@@ -25,11 +27,33 @@ namespace StartupCompanyGameComponentsOrganizer
             EmployeeLevel = employeeLevelEnum;
         }
 
+        public Component(string name, int hours, Dictionary<string, int> requiredComponents, ProfessionsEnum professionEnum, EmployeeLevelEnum employeeLevelEnum, List<Component> components)
+        {
+            Name = name;
+            CreatingTime = new TimeSpan(hours, 0, 0);
+            ProfessionEnum = professionEnum;
+            EmployeeLevelEnum = employeeLevelEnum;
+
+            if (requiredComponents != null)
+            {
+                RequiredComponents = new Dictionary<Component, int>();
+
+                foreach (var requiredComponent in requiredComponents)
+                {
+                    string componentName = requiredComponent.Key;
+                    int requierComponentQty = requiredComponent.Value;
+                    Component requireComponent = components.SingleOrDefault(c => c.Name == componentName);
+
+                    RequiredComponents.Add(requireComponent, requierComponentQty);
+                }
+            }
+        }
+
         public async Task Produce()
         {
             if (RequiredComponents == null)
             {
-                ProductionInfo.Info(this);
+                PrintInfo(this);
                 return;
             }
 
@@ -41,7 +65,16 @@ namespace StartupCompanyGameComponentsOrganizer
                 }
             }
 
-            ProductionInfo.Info(this);
+            PrintInfo(this);
+        }
+
+        private void PrintInfo(Component component)
+        {
+            string timeInfo = $"{component.CreatingTime.Hours.ToString().PadRight(2)} hours";
+
+            string info =
+                $" {component.Name.PadRight(30)} will be produced in {timeInfo} by [{component.EmployeeLevel} {component.Profession}]";
+            Console.WriteLine(info);
         }
     }
 }
