@@ -33,6 +33,13 @@ namespace StartupCompanyGameComponentsOrganizer
             new Component("Graphics Component", new TimeSpan(4, 0, 0), null, ProfessionsEnum.Designer, EmployeeLevelEnum.Beginner),
             new Component("Documentation Component", new TimeSpan(12, 0, 0), null, ProfessionsEnum.Designer,
                 EmployeeLevelEnum.Expert),
+            new Component("Virtual Hardware", new TimeSpan(4, 0, 0), null, ProfessionsEnum.SysAdmin, EmployeeLevelEnum.Beginner),
+            new Component("Operating System", new TimeSpan(4, 0, 0), null, ProfessionsEnum.SysAdmin, EmployeeLevelEnum.Beginner),
+            new Component("Firewall", new TimeSpan(4, 0, 0), null, ProfessionsEnum.SysAdmin, EmployeeLevelEnum.Beginner),
+            new Component("Process Management", new TimeSpan(6, 0, 0), null, ProfessionsEnum.SysAdmin, EmployeeLevelEnum.Intermediate),
+            new Component("Continuous Integration", new TimeSpan(8, 0, 0), null, ProfessionsEnum.SysAdmin, EmployeeLevelEnum.Intermediate),
+            new Component("Cron Job", new TimeSpan(3, 0, 0), null, ProfessionsEnum.SysAdmin, EmployeeLevelEnum.Intermediate),
+            new Component("Research Point(200)", new TimeSpan(1,0,0), null, ProfessionsEnum.Researcher, EmployeeLevelEnum.Beginner)
         };
 
         public List<Component> GetListWithData()
@@ -54,7 +61,7 @@ namespace StartupCompanyGameComponentsOrganizer
 
             components.Add(new Component("Storage Module", new TimeSpan(8, 0, 0), new Dictionary<Component, int>() { { components.SingleOrDefault(c => c.Name == "Filesystem Component"), 1 }, { components.SingleOrDefault(c => c.Name == "Backend Component"), 1 } }, ProfessionsEnum.LeadDeveloper, EmployeeLevelEnum.Beginner));
 
-            components.Add(new Component("Content Managment Module", new TimeSpan(37, 0, 0), new Dictionary<Component, int>() { { components.SingleOrDefault(c => c.Name == "Frontend Module"), 1 }, { components.SingleOrDefault(c => c.Name == "Input Module"), 1 }, { components.SingleOrDefault(c => c.Name == "Backend Module"), 1 } }, ProfessionsEnum.LeadDeveloper, EmployeeLevelEnum.Beginner));
+            components.Add(new Component("Content Management Module", new TimeSpan(37, 0, 0), new Dictionary<Component, int>() { { components.SingleOrDefault(c => c.Name == "Frontend Module"), 1 }, { components.SingleOrDefault(c => c.Name == "Input Module"), 1 }, { components.SingleOrDefault(c => c.Name == "Backend Module"), 1 } }, ProfessionsEnum.LeadDeveloper, EmployeeLevelEnum.Beginner));
 
             components.Add(new Component("Video Playback Module", new TimeSpan(45, 0, 0), new Dictionary<Component, int>() { { components.SingleOrDefault(c => c.Name == "Video Component"), 1 }, { components.SingleOrDefault(c => c.Name == "Frontend Module"), 1 }, { components.SingleOrDefault(c => c.Name == "Backend Module"), 1 } }, ProfessionsEnum.LeadDeveloper, EmployeeLevelEnum.Beginner));
 
@@ -79,6 +86,12 @@ namespace StartupCompanyGameComponentsOrganizer
             components.Add(new Component("Bandwidth Compression Module", 18, new Dictionary<string, int>() { { "Compression Component", 1 }, { "Network Component", 1 }, { "Backend Component", 1 } }, ProfessionsEnum.LeadDeveloper, EmployeeLevelEnum.Expert, components));
 
             components.Add(new Component("Code Optimization Module", 90, new Dictionary<string, int>() { { "Backend Module", 2 }, { "Database Layer", 2 }, { "Frontend Module", 2 } }, ProfessionsEnum.LeadDeveloper, EmployeeLevelEnum.Expert, components));
+
+            components.Add(new Component("Virtual Container", 25, new Dictionary<string, int>() { { "Virtual Hardware", 1 }, { "Operating System", 1 }, { "Process Management", 1 }, { "Continuous Integration", 1 }, { "Cron Job", 1 } }, ProfessionsEnum.SysAdmin, EmployeeLevelEnum.Expert, components));
+
+            components.Add(new Component("Cluster", 115, new Dictionary<string, int>() { { "Virtual Container", 3 }, { "Firewall", 10 } }, ProfessionsEnum.SysAdmin, EmployeeLevelEnum.Expert, components));
+
+            components.Add(new Component("Swarm Management", 140, new Dictionary<string, int>() { { "Cluster", 1 }, { "Virtual Container", 140 } }, ProfessionsEnum.SysAdmin, EmployeeLevelEnum.Expert, components));
 
             return components;
         }

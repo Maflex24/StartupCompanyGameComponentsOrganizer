@@ -10,6 +10,8 @@ namespace StartupCompanyGameComponentsOrganizer
     {
         Developer,
         LeadDeveloper,
-        Designer
+        Designer,
+        SysAdmin,
+        Researcher
     }
 }
