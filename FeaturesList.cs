@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace StartupCompanyGameComponentsOrganizer
 {
-    public class ListOfFeatures
+    public class FeaturesList
     {
         private readonly List<Component> _components;
 
-        public ListOfFeatures(List<Component> components)
+        public FeaturesList(List<Component> components)
         {
             _components = components;
         }

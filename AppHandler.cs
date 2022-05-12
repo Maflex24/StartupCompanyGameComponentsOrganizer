@@ -10,7 +10,7 @@ namespace StartupCompanyGameComponentsOrganizer
     {
         private readonly List<Feature> _features;
         private readonly List<Component> _components;
-        private static bool isCreated = false;
+        private static AppHandler _appHandler = default;
 
         private AppHandler(List<Feature> features, List<Component> components)
         {
@@ -20,14 +20,13 @@ namespace StartupCompanyGameComponentsOrganizer
 
         public static AppHandler CreateAppHandler(List<Feature> features, List<Component> components)
         {
-            if (!isCreated)
+            if (_appHandler == null)
             {
-                AppHandler appHandler = new AppHandler(features, components);
-                isCreated = true;
-                return appHandler;
+                AppHandler instance = new AppHandler(features, components);
+                return instance;
             }
 
-            return null;
+            return _appHandler;
         }
 
         public void App()
@@ -37,17 +36,20 @@ namespace StartupCompanyGameComponentsOrganizer
                 Console.WriteLine();
                 for (int i = 0; i < _features.Count; i++)
                 {
-                    Console.WriteLine($"{i.ToString().PadRight(3)} {_features[i].Name.PadRight(28)}");
+                    Console.WriteLine($"{(i + 1).ToString(),-3} {_features[i].Name.PadRight(28)}");
                 }
 
                 Console.Write("Type the number of feature to show path: ");
                 var userChoice = int.TryParse(Console.ReadLine(), out int userChoiceNumber);
 
-                if (!userChoice || userChoiceNumber >= _features.Count || userChoiceNumber < 0)
+                if (!userChoice || userChoiceNumber > _features.Count || userChoiceNumber < 1)
                 {
                     Console.WriteLine("\nYour choice is not valid! Choose correct number of feature");
                     continue;
                 }
+
+                // -1 or +1 is for user. It's more natural for user to use numbers of iteration from 1, not 0. 
+                userChoiceNumber -= 1;
 
                 Console.WriteLine();
                 Console.WriteLine($"Producing flow for [{_features[userChoiceNumber].Name}]");

@@ -19,10 +19,10 @@ namespace StartupCompanyGameComponentsOrganizer
             foreach (var requiredComponent in requiredComponents)
             {
                 string componentName = requiredComponent.Key;
-                int requierComponentQty = requiredComponent.Value;
+                int requiredComponentValue = requiredComponent.Value;
                 Component requireComponent = components.SingleOrDefault(c => c.Name == componentName);
 
-                RequiredComponents.Add(requireComponent, requierComponentQty);
+                RequiredComponents.Add(requireComponent, requiredComponentValue);
             }
         }
 

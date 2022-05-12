@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StartupCompanyGameComponentsOrganizer
 {
-    public class ListOfComponents
+    public class ComponentsList
     {
         List<Component> components = new List<Component>()
         {

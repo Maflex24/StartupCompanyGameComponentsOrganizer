@@ -32,22 +32,21 @@ namespace StartupCompanyGameComponentsOrganizer
             Profession = professionEnum;
             EmployeeLevel = employeeLevelEnum;
 
-            if (requiredComponents != null)
+            if (requiredComponents == null) return;
+
+            RequiredComponents = new Dictionary<Component, int>();
+
+            foreach (var requiredComponent in requiredComponents)
             {
-                RequiredComponents = new Dictionary<Component, int>();
+                var componentName = requiredComponent.Key;
+                var componentQty = requiredComponent.Value;
+                var component = components.SingleOrDefault(c => c.Name == componentName);
 
-                foreach (var requiredComponent in requiredComponents)
-                {
-                    string componentName = requiredComponent.Key;
-                    int requierComponentQty = requiredComponent.Value;
-                    Component requireComponent = components.SingleOrDefault(c => c.Name == componentName);
-
-                    RequiredComponents.Add(requireComponent, requierComponentQty);
-                }
+                RequiredComponents.Add(component, componentQty);
             }
         }
 
-        public async Task Produce()
+        public void Produce()
         {
             if (RequiredComponents == null)
             {
@@ -59,7 +58,7 @@ namespace StartupCompanyGameComponentsOrganizer
             {
                 for (int i = 0; i < requiredComponent.Value; i++)
                 {
-                    await requiredComponent.Key.Produce();
+                    requiredComponent.Key.Produce();
                 }
             }
 
@@ -68,14 +67,13 @@ namespace StartupCompanyGameComponentsOrganizer
 
         private void PrintInfo()
         {
-            string timeInfo = $"{CreatingTime.Hours.ToString().PadRight(2)} hours";
+            string timeInfo = $"{CreatingTime.Hours.ToString(),-2} hours";
 
             string spaces = "";
             if (RequiredComponents != null)
                 spaces = new string(' ', RequiredComponents.Count);
 
-            string info =
-                $"{(spaces + Name).PadRight(30)} will be produced in {timeInfo} by [{EmployeeLevel} {Profession}]";
+            string info = $"{(spaces + Name).PadRight(30)} will be produced in {timeInfo} by [{EmployeeLevel} {Profession}]";
             Console.WriteLine(info);
         }
     }

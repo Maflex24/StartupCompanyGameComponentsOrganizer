@@ -1,13 +1,15 @@
 ﻿using System.Runtime.CompilerServices;
 using StartupCompanyGameComponentsOrganizer;
 
-ListOfComponents listOfComponents = new ListOfComponents();
-List<Component> components = listOfComponents.GetListWithData();
+ComponentsList componentsList = new ComponentsList();
+List<Component> components = componentsList.GetListWithData();
 
-ListOfFeatures listOfFeatures = new ListOfFeatures(components);
-List<Feature> features = listOfFeatures.GetListWithData();
+FeaturesList featuresList = new FeaturesList(components);
+List<Feature> features = featuresList.GetListWithData();
 
 AppHandler appHandler = AppHandler.CreateAppHandler(features, components);
 appHandler.App();
+
+
 
 
