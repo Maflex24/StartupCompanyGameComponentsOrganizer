@@ -15,7 +15,7 @@ namespace StartupCompanyGameComponentsOrganizer
             _components = components;
         }
 
-        public List<Feature> GetListWithFills()
+        public List<Feature> GetListWithData()
         {
             List<Feature> features = new List<Feature>();
 

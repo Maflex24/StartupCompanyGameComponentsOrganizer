@@ -35,7 +35,7 @@ namespace StartupCompanyGameComponentsOrganizer
                 EmployeeLevelEnum.Expert),
         };
 
-        public List<Component> GetListWithFills()
+        public List<Component> GetListWithData()
         {
             List<Component> components = this.components;
 

@@ -33,6 +33,7 @@ namespace StartupCompanyGameComponentsOrganizer
                 for (int i = 0; i < requiredComponent.Value; i++)
                 {
                     requiredComponent.Key.Produce();
+                    Console.WriteLine(new string('-', 80));
                 }
             }
         }

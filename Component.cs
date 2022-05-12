@@ -72,7 +72,7 @@ namespace StartupCompanyGameComponentsOrganizer
 
             string spaces = "";
             if (RequiredComponents != null)
-                spaces = new string('-', RequiredComponents.Count);
+                spaces = new string(' ', RequiredComponents.Count);
 
             string info =
                 $"{(spaces + Name).PadRight(30)} will be produced in {timeInfo} by [{EmployeeLevel} {Profession}]";
