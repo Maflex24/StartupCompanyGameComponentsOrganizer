@@ -5,7 +5,9 @@ I think everybody who played the game [Startup Company](https://store.steampower
 
 ## How to use?
 When you run app you will have a list of features, which can be add to your game webpage. It's sorted like in a game. When you choose correct number of feature you will get a list with informations of component creating flow. 
-![workflow console](https://github.com/Maflex24/StartupCompanyGameComponentsOrganizer/tree/master/ReadmeFiles/workflow.png)
+
+![workflow console](https://github.com/Maflex24/StartupCompanyGameComponentsOrganizer/blob/master/ReadmeFiles/workflow.png)
+
 Like you see you will get information about every needed component, from most basic components, like "backend component" and "network component" to create "backend module". You also have information how long it will be (it's standard time, if your employee is faster it will be faster), and which type of employee (nad skill level) is required.
 I know it's only simple console app, I did what I can do right now, but I still hope it will help you!
 
